@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* ====== Forçar preto em títulos e labels ====== */
+h1, h2, h3, h4, h5, h6,
+label,
+.legend,
+.caption,
+strong,
+b {
+  color: #000 !important;
+}
+
+/* Caso algum utilitário do Tailwind (ex: text-gray-500) esteja aplicado,
+   use esta classe no contêiner (ex: <main class="force-black"> ... ) para
+   forçar tudo a preto sem alterar cada componente */
+.force-black, .force-black * {
+  color: #000 !important;
+}
+
+/* ====== Inputs, selects e textareas pretos ====== */
+input, select, textarea {
+  color: #000 !important;
+  -webkit-text-fill-color: #000; /* Safari/Chrome */
+}
+
+/* Placeholders quase pretos (padrão é cinza claro) */
+input::placeholder,
+textarea::placeholder {
+  color: #000 !important;
+  opacity: 0.75;
+}
+
+/* Options do <select> (alguns navegadores respeitam) */
+select option {
+  color: #000 !important;
+}
+
+/* ====== Remover autofill amarelo do Chrome ====== */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #000 !important;
+  box-shadow: 0 0 0px 1000px #fff inset !important; /* fundo branco */
+  transition: background-color 9999s ease-in-out 0s; /* hack pra manter */
+}
+
+/* Se você usa dark mode mas quer inputs SEMPRE pretos com fundo branco */
+@media (prefers-color-scheme: dark) {
+  input, select, textarea {
+    background-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+  }
+}
+
